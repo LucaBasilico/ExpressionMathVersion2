@@ -9,36 +9,45 @@ import java.util.List;
  */
 public class Eval {
     
-    List<String> expressionList;
+      List<String> expressionList;
+
+      public Eval() {
+      }
     
-    public Eval() {
-    }
-    
-    public void calculate(String expression){
-        expressionList = new ArrayList<String>(Arrays.asList(expression.split("(?<=\\d)(?=\\D)|(?<=\\D)(?=\\d)")));
-        double partialResult;
-        int index = 0;
+      public void calculate(String expression){
+            expressionList = new ArrayList<>(Arrays.asList(expression.split("(?<=\\d)(?=\\D)|(?<=\\D)(?=\\d)")));
+            if(expressionList.size() == 3){
+                  List<String> subList = expressionList.subList(0,3);
+                  printResult(parseEval(subList));
+            }else{
+                  
+            }
+          
         
-        
-//        Object arr[]=expressionList.toArray();  
-        
-//        for (Object expressionListed : arr) {
-//                if(expressionListed.matches("[*]")){
-//                    System.out.println("Entra per fare il calcolo * e /");
-//                    index = expressionList.indexOf("*");
-//                    System.out.println(index);
-//                    operationMoltiplication(expressionListed[index-1], expressionListed[index+1]);
-//                    
-//                    
+//      for (int i = 0; i < expressionList.size(); i++) {
+//            if(expressionList.get(i).matches("[0-9]+")){
+//                  if( (i > 0)  && (expressionList.get(i-2).matches("[0-9]+")) ){
+//                        System.out.println("Eval.calculate()");
+//                  }
+////                      int partialResult;
+////                      partialResult = Integer.parseInt(expressionList.get(i-1)) * Integer.parseInt(expressionList.get(i+1));
+////                      printResult(partialResult);
 //                }
-//                if(expressionListed.matches("[/]")){
-//                    System.out.println("Entra per fare il calcolo * e /");
-//                    index = expressionList.indexOf("/");
-//                    System.out.println(index);
-//                }
-//
-//        }
-        
-    }
+//                      
+//          }
+      }
     
+      public int parseEval(List<String> expression){
+            int index = 1;
+            int partialResult;
+            if(expression.get(index).matches("[+]")){
+                  partialResult = Integer.parseInt(expressionList.get(index-1)) + Integer.parseInt(expressionList.get(index+1));
+                  return partialResult;
+            }
+            return 0;
+      }
+    
+      public void printResult(int result){
+            System.out.println("The result is "+result);
+      }
 }
