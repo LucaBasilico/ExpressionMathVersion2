@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import javax.xml.bind.DatatypeConverter;
 
 /**
  *Create by luca on 01-May-2016
@@ -23,8 +22,6 @@ public class CheckInput {
 
                   testDimension = testDimension(userExpression);
                   firstLetterNotSymbol = testFirstLetter(userExpression.substring(0, 0));
-                  symbolsNear = symbolsClose(userExpression);
-            
                
                   
             if( parentesisDown == parentesisUp){
@@ -85,15 +82,6 @@ public class CheckInput {
             System.out.println("You have printed inserted a symbol into a wrong position. Please, check!");
       }
       
-      private boolean symbolsClose(String express){
-               for(int i=0; i< express.length(); i++)
-                  {
-                        if(express.matches("[-+*/]") && express[i-1].matches("[-+*/]")){
-                              checkUserExpression = false;
-                              printErrorInputExpression(i);
-                              break;
-                        }
-                  }
-      }
+      
       
 }
